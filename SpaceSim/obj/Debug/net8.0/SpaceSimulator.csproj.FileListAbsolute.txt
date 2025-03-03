@@ -1,0 +1,11 @@
+C:\DAT HVL\DAT154\SpaceSim\SpaceSim\bin\Debug\net8.0\SpaceSimulator.deps.json
+C:\DAT HVL\DAT154\SpaceSim\SpaceSim\bin\Debug\net8.0\SpaceSimulator.dll
+C:\DAT HVL\DAT154\SpaceSim\SpaceSim\bin\Debug\net8.0\SpaceSimulator.pdb
+C:\DAT HVL\DAT154\SpaceSim\SpaceSim\obj\Debug\net8.0\SpaceSimulator.GeneratedMSBuildEditorConfig.editorconfig
+C:\DAT HVL\DAT154\SpaceSim\SpaceSim\obj\Debug\net8.0\SpaceSimulator.AssemblyInfoInputs.cache
+C:\DAT HVL\DAT154\SpaceSim\SpaceSim\obj\Debug\net8.0\SpaceSimulator.AssemblyInfo.cs
+C:\DAT HVL\DAT154\SpaceSim\SpaceSim\obj\Debug\net8.0\SpaceSimulator.csproj.CoreCompileInputs.cache
+C:\DAT HVL\DAT154\SpaceSim\SpaceSim\obj\Debug\net8.0\SpaceSimulator.dll
+C:\DAT HVL\DAT154\SpaceSim\SpaceSim\obj\Debug\net8.0\refint\SpaceSimulator.dll
+C:\DAT HVL\DAT154\SpaceSim\SpaceSim\obj\Debug\net8.0\SpaceSimulator.pdb
+C:\DAT HVL\DAT154\SpaceSim\SpaceSim\obj\Debug\net8.0\ref\SpaceSimulator.dll
