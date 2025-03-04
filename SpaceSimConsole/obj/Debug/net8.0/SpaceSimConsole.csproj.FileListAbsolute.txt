@@ -16,3 +16,4 @@ C:\DAT HVL\DAT154\SpaceSim\SpaceSimConsole\obj\Debug\net8.0\refint\SpaceSimConso
 C:\DAT HVL\DAT154\SpaceSim\SpaceSimConsole\obj\Debug\net8.0\SpaceSimConsole.pdb
 C:\DAT HVL\DAT154\SpaceSim\SpaceSimConsole\obj\Debug\net8.0\SpaceSimConsole.genruntimeconfig.cache
 C:\DAT HVL\DAT154\SpaceSim\SpaceSimConsole\obj\Debug\net8.0\ref\SpaceSimConsole.dll
+C:\DAT HVL\DAT154\SpaceSim\SpaceSimConsole\obj\Debug\net8.0\SpaceSimConsole.sourcelink.json

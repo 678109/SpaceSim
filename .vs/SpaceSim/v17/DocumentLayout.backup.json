@@ -18,8 +18,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "SpaceObject.cs",
+              "DocumentMoniker": "C:\\DAT HVL\\DAT154\\SpaceSim\\SpaceSim\\SpaceObject.cs",
+              "RelativeDocumentMoniker": "SpaceSim\\SpaceObject.cs",
+              "ToolTip": "C:\\DAT HVL\\DAT154\\SpaceSim\\SpaceSim\\SpaceObject.cs*",
+              "RelativeToolTip": "SpaceSim\\SpaceObject.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-03T15:25:32.159Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 1,
@@ -28,21 +41,9 @@
               "RelativeDocumentMoniker": "SpaceSimConsole\\Astronomy.cs",
               "ToolTip": "C:\\DAT HVL\\DAT154\\SpaceSim\\SpaceSimConsole\\Astronomy.cs",
               "RelativeToolTip": "SpaceSimConsole\\Astronomy.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAAwA4AAAAkAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADcAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-03T15:54:04.999Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "SpaceObject.cs",
-              "DocumentMoniker": "C:\\DAT HVL\\DAT154\\SpaceSim\\SpaceSim\\SpaceObject.cs",
-              "RelativeDocumentMoniker": "SpaceSim\\SpaceObject.cs",
-              "ToolTip": "C:\\DAT HVL\\DAT154\\SpaceSim\\SpaceSim\\SpaceObject.cs",
-              "RelativeToolTip": "SpaceSim\\SpaceObject.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAgwAwAAAAYAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-03T15:25:32.159Z",
+              "WhenOpened": "2025-03-03T15:54:04.999Z",
               "EditorCaption": ""
             }
           ]

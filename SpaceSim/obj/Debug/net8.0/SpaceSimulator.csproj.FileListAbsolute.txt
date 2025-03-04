@@ -9,3 +9,4 @@ C:\DAT HVL\DAT154\SpaceSim\SpaceSim\obj\Debug\net8.0\SpaceSimulator.dll
 C:\DAT HVL\DAT154\SpaceSim\SpaceSim\obj\Debug\net8.0\refint\SpaceSimulator.dll
 C:\DAT HVL\DAT154\SpaceSim\SpaceSim\obj\Debug\net8.0\SpaceSimulator.pdb
 C:\DAT HVL\DAT154\SpaceSim\SpaceSim\obj\Debug\net8.0\ref\SpaceSimulator.dll
+C:\DAT HVL\DAT154\SpaceSim\SpaceSim\obj\Debug\net8.0\SpaceSimulator.sourcelink.json
