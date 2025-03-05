@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\DAT HVL\\DAT154\\SpaceSim\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{ED1164B4-8837-44F6-957F-F9D5CBB089E3}|SpaceSim\\SpaceSimulator.csproj|c:\\dat hvl\\dat154\\spacesim\\spacesim\\spaceobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ED1164B4-8837-44F6-957F-F9D5CBB089E3}|SpaceSim\\SpaceSimulator.csproj|solutionrelative:spacesim\\spaceobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{4EC3FA82-84E2-4F94-8E02-BF53C31AEC5E}|SpaceSimConsole\\SpaceSimConsole.csproj|c:\\dat hvl\\dat154\\spacesim\\spacesimconsole\\astronomy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4EC3FA82-84E2-4F94-8E02-BF53C31AEC5E}|SpaceSimConsole\\SpaceSimConsole.csproj|solutionrelative:spacesimconsole\\astronomy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED1164B4-8837-44F6-957F-F9D5CBB089E3}|SpaceSim\\SpaceSimulator.csproj|c:\\dat hvl\\dat154\\spacesim\\spacesim\\spaceobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED1164B4-8837-44F6-957F-F9D5CBB089E3}|SpaceSim\\SpaceSimulator.csproj|solutionrelative:spacesim\\spaceobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,30 +18,30 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "SpaceObject.cs",
               "DocumentMoniker": "C:\\DAT HVL\\DAT154\\SpaceSim\\SpaceSim\\SpaceObject.cs",
               "RelativeDocumentMoniker": "SpaceSim\\SpaceObject.cs",
               "ToolTip": "C:\\DAT HVL\\DAT154\\SpaceSim\\SpaceSim\\SpaceObject.cs*",
               "RelativeToolTip": "SpaceSim\\SpaceObject.cs*",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGMAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-03T15:25:32.159Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Astronomy.cs",
               "DocumentMoniker": "C:\\DAT HVL\\DAT154\\SpaceSim\\SpaceSimConsole\\Astronomy.cs",
               "RelativeDocumentMoniker": "SpaceSimConsole\\Astronomy.cs",
               "ToolTip": "C:\\DAT HVL\\DAT154\\SpaceSim\\SpaceSimConsole\\Astronomy.cs",
               "RelativeToolTip": "SpaceSimConsole\\Astronomy.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADcAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAABMAAAAAAAAAAAAAAC4AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-03T15:54:04.999Z",
               "EditorCaption": ""

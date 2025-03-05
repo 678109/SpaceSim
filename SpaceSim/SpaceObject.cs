@@ -4,14 +4,33 @@ namespace SpaceSimulator
 {
     public class SpaceObject
     {
+        
+        public string Name { get; protected set; }
+        public double OrbitalRadius { get; set; }
+        public double OrbitalPeriod { get; set; }
+        public double ObjectRadius { get; set; }
+        public double RotationPeriod { get; set; }
+        public string Colour { get; set; }
 
-        public String Name { get; protected set;}
-
-        public SpaceObject(string name) {
+        public SpaceObject(String name)
+        {
             Name = name;
         }
-            public virtual void Draw() {
-            Console.WriteLine(Name);
+
+        public virtual void Draw()
+        {
+            Console.WriteLine($"{Name} (Colour: {Colour}, Diameter: {ObjectRadius * 2} km)");
+        }
+
+        public (double X, double Y) GetPosition(double daysSinceStart)
+        {
+            if (OrbitalPeriod <= 0)
+                return (0, 0);
+            
+            double angle = 2 * Math.PI * daysSinceStart / OrbitalPeriod;
+            double x = Math.Cos(angle) * OrbitalRadius;
+            double y = Math.Sin(angle) * OrbitalRadius;
+            return (x, y);
         }
     }
 
@@ -76,24 +95,6 @@ namespace SpaceSimulator
         public override void Draw()
         {
             Console.Write("Dwarf Planet: ");
-            base.Draw();
-        }
-    }
-    public class BlackHole : SpaceObject
-    {
-        public BlackHole(String name) : base(name) { }
-        public override void Draw()
-        {
-            Console.Write("Black Hole: ");
-            base.Draw();
-        }
-    }
-    public class Galaxy : SpaceObject
-    {
-        public Galaxy(String name) : base(name) { }
-        public override void Draw()
-        {
-            Console.Write("Galaxy: ");
             base.Draw();
         }
     }
