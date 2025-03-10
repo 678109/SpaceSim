@@ -45,6 +45,8 @@ namespace SpaceSimulator
 
     public class Planet : SpaceObject
     {
+
+        public List<Moon> Moons { get; set; } = new List<Moon>();
         public Planet(String name) : base(name) { }
         public override void Draw() {
             Console.Write("Planet : ");
@@ -52,13 +54,34 @@ namespace SpaceSimulator
         }
     }
 
-    public class Moon : SpaceObject {
-        public Moon(String name) : base(name) { }
-        public override void Draw() {
-            Console.Write("Moon  : ");
-            base.Draw();
+    public class Moon : SpaceObject
+    {
+        public Planet Orbits { get; set; }
+
+        public Moon(string name, Planet orbits) : base(name)
+        {
+            Orbits = orbits;
+        }
+
+        public override void Draw()
+        {
+            Console.WriteLine($"[Moon] {Name} (Orbits: {Orbits.Name}, Colour: {Colour}, Diameter: {ObjectRadius * 2} km)");
+        }
+
+        public virtual (double X, double Y) GetPosition(double daysSinceStart)
+        {
+            // Månen sin posisjon er relativ til planeten den går rundt
+            var (planetX, planetY) = Orbits.GetPosition(daysSinceStart);
+
+            // Beregn måne sin posisjon i forhold til planeten
+            double angle = 2 * Math.PI * daysSinceStart / OrbitalPeriod;
+            double moonX = planetX + OrbitalRadius * Math.Cos(angle);
+            double moonY = planetY + OrbitalRadius * Math.Sin(angle);
+
+            return (moonX, moonY);
         }
     }
+
 
     public class Asteroid : SpaceObject
     {
