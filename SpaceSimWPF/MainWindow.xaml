@@ -1,0 +1,32 @@
+﻿<Window x:Class="SpaceSimWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Solar System" Height="800" Width="1000" Background="Black">
+
+    <Grid>
+        <!-- Canvas som fyller hele vinduet -->
+        <Canvas Name="SolarSystemCanvas" Background="Black"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                MouseWheel="SolarSystemCanvas_MouseWheel"
+                MouseDown="SolarSystemCanvas_MouseDown"
+                MouseMove="SolarSystemCanvas_MouseMove"
+                MouseUp="SolarSystemCanvas_MouseUp"/>
+
+        <TextBlock Text="Planets" Foreground="White" FontSize="16" FontWeight="Bold"
+           HorizontalAlignment="Left" VerticalAlignment="Top"
+           Margin="10,5,0,0"/>
+
+        <ComboBox Name="PlanetSelector" Width="150" Height="30"
+          HorizontalAlignment="Left" VerticalAlignment="Top"
+          Margin="10,30,0,0"
+          Text="Planets"
+          SelectionChanged="PlanetSelector_SelectionChanged"/>
+
+        <Button Name="ToggleInfoButton" Content="Toggle Info" Width="100" Height="30"
+        HorizontalAlignment="Right" VerticalAlignment="Top"
+        Margin="10"
+        Click="ToggleInfoButton_Click"/>
+
+    </Grid>
+</Window>

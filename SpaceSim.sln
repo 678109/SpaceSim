@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35806.99 d17.13
+VisualStudioVersion = 17.13.35806.99
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpaceSimulator", "SpaceSim\SpaceSimulator.csproj", "{ED1164B4-8837-44F6-957F-F9D5CBB089E3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpaceSimConsole", "SpaceSimConsole\SpaceSimConsole.csproj", "{4EC3FA82-84E2-4F94-8E02-BF53C31AEC5E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpaceSimWPF", "SpaceSimWPF\SpaceSimWPF.csproj", "{62B78EAC-7F91-435E-8BF6-9206C29EFA6B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{4EC3FA82-84E2-4F94-8E02-BF53C31AEC5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4EC3FA82-84E2-4F94-8E02-BF53C31AEC5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4EC3FA82-84E2-4F94-8E02-BF53C31AEC5E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62B78EAC-7F91-435E-8BF6-9206C29EFA6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62B78EAC-7F91-435E-8BF6-9206C29EFA6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62B78EAC-7F91-435E-8BF6-9206C29EFA6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62B78EAC-7F91-435E-8BF6-9206C29EFA6B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
