@@ -66,13 +66,81 @@ namespace SpaceSimWPF
         }
 
 
+       
+
+
+
+
+
+
+
+        private void DrawPlanet(Planet planet, double centerX, double centerY)
+        {
+            double daysSinceStart = 0;
+            var (planetX, planetY) = planet.GetPosition(daysSinceStart);
+
+            double scaledDistance = Math.Log10(planet.OrbitalRadius) * 60 * ScaleFactor;
+            double scaledSize = (planet.ObjectRadius / sun.ObjectRadius) * 60 * ScaleFactor;
+            scaledSize = Math.Max(scaledSize, MinPlanetSize * ScaleFactor);
+
+            double angle = Math.Atan2(planetY, planetX);
+            double scaledX = centerX + Math.Cos(angle) * scaledDistance;
+            double scaledY = centerY + Math.Sin(angle) * scaledDistance;
+
+            DrawCircle(SolarSystemCanvas, scaledX, scaledY, scaledSize, GetPlanetColor(planet));
+            if (showLabels && showInfoPanel)
+            {
+                DrawText(SolarSystemCanvas, scaledX + (scaledSize + 5), scaledY, planet.Name, Brushes.White);
+            }
+
+            if (showOrbits) DrawOrbit(SolarSystemCanvas, centerX, centerY, scaledDistance);
+        }
+
+
+        private void DrawMoons(Planet planet)
+        {
+            SolarSystemCanvas.Children.Clear();
+            double centerX = this.Width / 2 + offsetX;
+            double centerY = this.Height / 2 + offsetY;
+
+            // 🌍 Tegn planeten i midten
+            DrawCircle(SolarSystemCanvas, centerX, centerY, 40, GetPlanetColor(planet));
+
+            // 🎯 Kun tegn planetnavn hvis info-panelet er på
+            if (showInfoPanel)
+            {
+                DrawText(SolarSystemCanvas, centerX, centerY - 50, planet.Name, Brushes.White);
+            }
+
+            foreach (var moon in planet.Moons)
+            {
+                var (moonX, moonY) = moon.GetPosition(daysSinceStart);
+
+                double moonDistance = Math.Sqrt(moonX * moonX + moonY * moonY) * ScaleFactor;
+                double moonSize = Math.Max((moon.ObjectRadius / planet.ObjectRadius) * 20, 2);
+                double angle = Math.Atan2(moonY, moonX);
+                double moonScreenX = centerX + Math.Cos(angle) * moonDistance;
+                double moonScreenY = centerY + Math.Sin(angle) * moonDistance;
+
+                DrawCircle(SolarSystemCanvas, moonScreenX, moonScreenY, moonSize, Brushes.Gray);
+
+                if (showOrbits)
+                {
+                    DrawOrbit(SolarSystemCanvas, centerX, centerY, moonDistance);
+                }
+            }
+
+            DrawInfoPanel(); // 🎯 Tegn info-panelet i planetvisning
+        }
+
+
+
         private void DrawSolarSystem()
         {
             SolarSystemCanvas.Children.Clear();
             double centerX = (this.Width / 2) + offsetX;
             double centerY = (this.Height / 2) + offsetY;
 
-            // 🔍 Logg hvilken modus vi er i
             using (StreamWriter logFile = new StreamWriter("simulation_log.txt", true))
             {
                 logFile.WriteLine("\n--- Drawing Solar System ---");
@@ -86,11 +154,7 @@ namespace SpaceSimWPF
                     logFile.WriteLine($"Planet View Mode: Centering on {selectedPlanet.Name}");
                 }
 
-                // Tegn solen som referansepunkt
-                DrawCircle(SolarSystemCanvas, centerX, centerY, 60, Brushes.Yellow);
-                if (showLabels) DrawText(SolarSystemCanvas, centerX, centerY - 70, "Sun", Brushes.White);
-
-                // 🎯 Hent planetens posisjon og tegn den i sentrum
+                // 🎯 Tegn kun den valgte planeten i midten
                 var (planetX, planetY) = selectedPlanet.GetPosition(daysSinceStart);
                 double scaledX = centerX;
                 double scaledY = centerY;
@@ -107,20 +171,26 @@ namespace SpaceSimWPF
                 {
                     var (moonX, moonY) = moon.GetPosition(daysSinceStart);
 
-                    double scaledMoonX = centerX + (moonX / 1000.0) * ScaleFactor;
-                    double scaledMoonY = centerY + (moonY / 1000.0) * ScaleFactor;
+                    double moonDistance = Math.Sqrt(moonX * moonX + moonY * moonY) * ScaleFactor;
+                    double moonSize = Math.Max((moon.ObjectRadius / selectedPlanet.ObjectRadius) * 20, 2);
+                    double angle = Math.Atan2(moonY, moonX);
+                    double moonScreenX = centerX + Math.Cos(angle) * moonDistance;
+                    double moonScreenY = centerY + Math.Sin(angle) * moonDistance;
 
-                    DrawCircle(SolarSystemCanvas, scaledMoonX, scaledMoonY, 10, Brushes.Gray);
+                    DrawCircle(SolarSystemCanvas, moonScreenX, moonScreenY, moonSize, Brushes.Gray);
+
+                    if (showOrbits)
+                        DrawOrbit(SolarSystemCanvas, centerX, centerY, moonDistance);
 
                     using (StreamWriter logFile = new StreamWriter("simulation_log.txt", true))
                     {
-                        logFile.WriteLine($"Drawing Moon {moon.Name} at ({scaledMoonX}, {scaledMoonY})");
+                        logFile.WriteLine($"Drawing Moon {moon.Name} at ({moonScreenX}, {moonScreenY})");
                     }
                 }
             }
             else // ☀️ Solar System View Mode
             {
-                // 🌞 Tegn solen
+                // 🌞 Tegn solen (kun i Solar System View)
                 DrawCircle(SolarSystemCanvas, centerX, centerY, 60, Brushes.Yellow);
                 if (showLabels) DrawText(SolarSystemCanvas, centerX, centerY - 70, "Sun", Brushes.White);
 
@@ -151,66 +221,6 @@ namespace SpaceSimWPF
 
 
 
-
-
-
-        private void DrawPlanet(Planet planet, double centerX, double centerY)
-        {
-            double daysSinceStart = 0;
-            var (planetX, planetY) = planet.GetPosition(daysSinceStart);
-
-            double scaledDistance = Math.Log10(planet.OrbitalRadius) * 60 * ScaleFactor;
-            double scaledSize = (planet.ObjectRadius / sun.ObjectRadius) * 60 * ScaleFactor;
-            scaledSize = Math.Max(scaledSize, MinPlanetSize * ScaleFactor);
-
-            double angle = Math.Atan2(planetY, planetX);
-            double scaledX = centerX + Math.Cos(angle) * scaledDistance;
-            double scaledY = centerY + Math.Sin(angle) * scaledDistance;
-
-            DrawCircle(SolarSystemCanvas, scaledX, scaledY, scaledSize, GetPlanetColor(planet));
-            if (showLabels && showInfoPanel)
-            {
-                DrawText(SolarSystemCanvas, scaledX + (scaledSize + 5), scaledY, planet.Name, Brushes.White);
-            }
-
-            if (showOrbits) DrawOrbit(SolarSystemCanvas, centerX, centerY, scaledDistance);
-        }
-
-
-
-        private void DrawMoons(Planet planet)
-        {
-            SolarSystemCanvas.Children.Clear();
-            double centerX = this.Width / 2;
-            double centerY = this.Height / 2;
-
-            // 🌍 Tegn planeten i midten
-            DrawCircle(SolarSystemCanvas, centerX, centerY, 40, GetPlanetColor(planet));
-
-            // 🎯 Kun tegn planetnavn hvis info-panelet er på
-            if (showInfoPanel)
-            {
-                DrawText(SolarSystemCanvas, centerX, centerY - 50, planet.Name, Brushes.White);
-            }
-
-            foreach (var moon in planet.Moons)
-            {
-                double moonDistance = Math.Log10(moon.OrbitalRadius + 1) * 30 * ScaleFactor;
-                double moonSize = Math.Max((moon.ObjectRadius / planet.ObjectRadius) * 20, 2);
-                double angle = Math.Atan2(moon.OrbitalRadius, moon.OrbitalRadius);
-                double moonX = centerX + Math.Cos(angle) * moonDistance;
-                double moonY = centerY + Math.Sin(angle) * moonDistance;
-
-                DrawCircle(SolarSystemCanvas, moonX, moonY, moonSize, Brushes.Gray);
-
-                if (showOrbits)
-                {
-                    DrawOrbit(SolarSystemCanvas, centerX, centerY, moonDistance);
-                }
-            }
-
-            DrawInfoPanel(); // 🎯 Tegn info-panelet i planetvisning
-        }
 
 
         private void PlanetSelector_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -420,16 +430,19 @@ namespace SpaceSimWPF
             //  **Viktig! Oppdater GUI i UI-tråden**
             Dispatcher.Invoke(() =>
             {
-                DrawSolarSystem();  
+                if (isZoomedIn && selectedPlanet != null)
+                {
+                    DrawMoons(selectedPlanet);  // 🎯 Oppdater planet-visningen
+                }
+                else
+                {
+                    DrawSolarSystem();          // 🎯 Oppdater solsystem-visningen
+                }
             });
         }
+
     }
 }
-
-
-
-
-
 
 
 

@@ -28,5 +28,6 @@
         Margin="10"
         Click="ToggleInfoButton_Click"/>
 
+
     </Grid>
 </Window>

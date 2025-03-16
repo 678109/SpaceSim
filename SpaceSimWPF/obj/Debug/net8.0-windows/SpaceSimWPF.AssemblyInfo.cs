@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SpaceSimWPF")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9fe5a07d79e2dfd928aec42e2ba9a2637062e362")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1b5b354d7da35c82fdde338f0bb6f689f9213d83")]
 [assembly: System.Reflection.AssemblyProductAttribute("SpaceSimWPF")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SpaceSimWPF")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -113,7 +113,7 @@ namespace SpaceSimulator
         {
             Console.WriteLine($"[Moon] {Name} (Orbits: {Orbits.Name}, Colour: {Colour}, Diameter: {ObjectRadius * 2} km)");
         }
-
+        /*
         public virtual (double X, double Y) GetPosition(double daysSinceStart)
         {
             // Månen sin posisjon er relativ til planeten den går rundt
@@ -126,6 +126,17 @@ namespace SpaceSimulator
 
             return (moonX, moonY);
         }
+
+        */
+
+        public (double X, double Y) GetPosition(double daysSinceStart)
+        {
+            double angle = 2 * Math.PI * (daysSinceStart / OrbitalPeriod);
+            double x = OrbitalRadius * Math.Cos(angle);
+            double y = OrbitalRadius * Math.Sin(angle);
+            return (x, y);
+        }
+
 
         // 🎯 Oppdater månens posisjon basert på tid
         public void UpdatePosition(double timeStep)
