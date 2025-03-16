@@ -6,6 +6,8 @@ using System.Windows.Media;
 using System.Windows.Shapes;
 using System.Windows.Input;
 using SpaceSimulator; // Importer ObjectInfo
+using System.IO;
+
 
 namespace SpaceSimWPF
 {
@@ -18,7 +20,8 @@ namespace SpaceSimWPF
         private bool showLabels = true;
         private bool showOrbits = true;
         private bool isZoomedIn = false;
-        private bool showInfoPanel = true; 
+        private bool showInfoPanel = true;
+        private SimulationController simulationController;
         private Planet selectedPlanet = null;
 
         private List<Planet> planets;
@@ -29,6 +32,8 @@ namespace SpaceSimWPF
         private Point lastMousePosition;
         private double offsetX = 0;
         private double offsetY = 0;
+        private double daysSinceStart = 0;  // Holder styr på hvor lenge simuleringen har kjørt
+
 
         public MainWindow()
         {
@@ -52,8 +57,14 @@ namespace SpaceSimWPF
             PlanetSelector.ItemsSource = planets;
             PlanetSelector.DisplayMemberPath = "Name"; // Vis planetnavn i dropdown
 
+            // 🎯 Start simulasjonskontrolleren
+            simulationController = new SimulationController();
+            simulationController.DoTick += UpdatePositions; // Abonner på DoTick-eventet
+            simulationController.Start(); // Start simuleringen
+
             DrawSolarSystem();
         }
+
 
         private void DrawSolarSystem()
         {
@@ -61,18 +72,87 @@ namespace SpaceSimWPF
             double centerX = (this.Width / 2) + offsetX;
             double centerY = (this.Height / 2) + offsetY;
 
-            // 🌞 Tegn solen
-            DrawCircle(SolarSystemCanvas, centerX, centerY, 60, Brushes.Yellow);
-            if (showLabels) DrawText(SolarSystemCanvas, centerX, centerY - 70, "Sun", Brushes.White);
-
-            // 🪐 Tegn alle planeter
-            foreach (var planet in planets)
+            // 🔍 Logg hvilken modus vi er i
+            using (StreamWriter logFile = new StreamWriter("simulation_log.txt", true))
             {
-                DrawPlanet(planet, centerX, centerY);
+                logFile.WriteLine("\n--- Drawing Solar System ---");
+                logFile.WriteLine($"Current mode: {(isZoomedIn ? "Planet View" : "Solar System View")}");
             }
-            if (isZoomedIn) DrawInfoPanel(); // 🎯 Tegn info-panelet kun i planetvisning
 
+            if (isZoomedIn && selectedPlanet != null) // 🌍 Planet View Mode
+            {
+                using (StreamWriter logFile = new StreamWriter("simulation_log.txt", true))
+                {
+                    logFile.WriteLine($"Planet View Mode: Centering on {selectedPlanet.Name}");
+                }
+
+                // Tegn solen som referansepunkt
+                DrawCircle(SolarSystemCanvas, centerX, centerY, 60, Brushes.Yellow);
+                if (showLabels) DrawText(SolarSystemCanvas, centerX, centerY - 70, "Sun", Brushes.White);
+
+                // 🎯 Hent planetens posisjon og tegn den i sentrum
+                var (planetX, planetY) = selectedPlanet.GetPosition(daysSinceStart);
+                double scaledX = centerX;
+                double scaledY = centerY;
+
+                DrawCircle(SolarSystemCanvas, scaledX, scaledY, 30, GetPlanetColor(selectedPlanet));
+
+                using (StreamWriter logFile = new StreamWriter("simulation_log.txt", true))
+                {
+                    logFile.WriteLine($"Drawing {selectedPlanet.Name} at center ({scaledX}, {scaledY})");
+                }
+
+                // 🌙 Tegn måner i forhold til planeten
+                foreach (var moon in selectedPlanet.Moons)
+                {
+                    var (moonX, moonY) = moon.GetPosition(daysSinceStart);
+
+                    double scaledMoonX = centerX + (moonX / 1000.0) * ScaleFactor;
+                    double scaledMoonY = centerY + (moonY / 1000.0) * ScaleFactor;
+
+                    DrawCircle(SolarSystemCanvas, scaledMoonX, scaledMoonY, 10, Brushes.Gray);
+
+                    using (StreamWriter logFile = new StreamWriter("simulation_log.txt", true))
+                    {
+                        logFile.WriteLine($"Drawing Moon {moon.Name} at ({scaledMoonX}, {scaledMoonY})");
+                    }
+                }
+            }
+            else // ☀️ Solar System View Mode
+            {
+                // 🌞 Tegn solen
+                DrawCircle(SolarSystemCanvas, centerX, centerY, 60, Brushes.Yellow);
+                if (showLabels) DrawText(SolarSystemCanvas, centerX, centerY - 70, "Sun", Brushes.White);
+
+                // 🪐 Tegn alle planeter med riktig skalering
+                foreach (var planet in planets)
+                {
+                    double scaledDistance = Math.Log10(planet.OrbitalRadius + 1) * 100 * ScaleFactor;
+                    double scaledSize = (planet.ObjectRadius / sun.ObjectRadius) * 60 * ScaleFactor;
+                    scaledSize = Math.Max(scaledSize, MinPlanetSize * ScaleFactor);
+
+                    var (planetX, planetY) = planet.GetPosition(daysSinceStart);
+
+                    double scaledX = centerX + (planetX / planet.OrbitalRadius) * scaledDistance;
+                    double scaledY = centerY + (planetY / planet.OrbitalRadius) * scaledDistance;
+
+                    DrawCircle(SolarSystemCanvas, scaledX, scaledY, scaledSize, GetPlanetColor(planet));
+
+                    using (StreamWriter logFile = new StreamWriter("simulation_log.txt", true))
+                    {
+                        logFile.WriteLine($"Drawing {planet.Name} at ({scaledX}, {scaledY}) after update");
+                    }
+
+                    if (showLabels) DrawText(SolarSystemCanvas, scaledX + (scaledSize + 5), scaledY, planet.Name, Brushes.White);
+                    if (showOrbits) DrawOrbit(SolarSystemCanvas, centerX, centerY, scaledDistance);
+                }
+            }
         }
+
+
+
+
+
 
         private void DrawPlanet(Planet planet, double centerX, double centerY)
         {
@@ -93,9 +173,10 @@ namespace SpaceSimWPF
                 DrawText(SolarSystemCanvas, scaledX + (scaledSize + 5), scaledY, planet.Name, Brushes.White);
             }
 
-
             if (showOrbits) DrawOrbit(SolarSystemCanvas, centerX, centerY, scaledDistance);
         }
+
+
 
         private void DrawMoons(Planet planet)
         {
@@ -291,7 +372,7 @@ namespace SpaceSimWPF
         {
             if (!showInfoPanel || selectedPlanet == null) return;
 
-          
+
 
             // 🔹 Tekstinnhold
             string infoText = $"Planet: {selectedPlanet.Name}\nMoons: ";
@@ -312,6 +393,43 @@ namespace SpaceSimWPF
         }
 
 
+
+        private void UpdatePositions(double timeStep)
+        {
+            daysSinceStart += timeStep;  // ⏳ Øker tiden for hvert tic
+
+            using (StreamWriter logFile = new StreamWriter("simulation_log.txt", true))
+            {
+                logFile.WriteLine($"UpdatePositions called at simulated day {daysSinceStart}");
+            }
+
+            // 🚀 Oppdater posisjonene
+            foreach (var planet in planets)
+            {
+                planet.UpdatePosition(daysSinceStart);  // Bruk den OPPDATERTE tiden
+            }
+
+            if (isZoomedIn && selectedPlanet != null)
+            {
+                foreach (var moon in selectedPlanet.Moons)
+                {
+                    moon.UpdatePosition(daysSinceStart);
+                }
+            }
+
+            //  **Viktig! Oppdater GUI i UI-tråden**
+            Dispatcher.Invoke(() =>
+            {
+                DrawSolarSystem();  
+            });
+        }
     }
 }
+
+
+
+
+
+
+
 

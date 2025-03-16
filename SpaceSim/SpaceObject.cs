@@ -4,13 +4,15 @@ namespace SpaceSimulator
 {
     public class SpaceObject
     {
-        
+
         public string Name { get; protected set; }
         public double OrbitalRadius { get; set; }
         public double OrbitalPeriod { get; set; }
         public double ObjectRadius { get; set; }
         public double RotationPeriod { get; set; }
         public string Colour { get; set; }
+        public double CurrentX { get; protected set; }
+        public double CurrentY { get; protected set; }
 
         public SpaceObject(String name)
         {
@@ -24,20 +26,39 @@ namespace SpaceSimulator
 
         public (double X, double Y) GetPosition(double daysSinceStart)
         {
+            string logFilePath = "simulation_log.txt";
+            using (StreamWriter logFile = new StreamWriter(logFilePath, true))
+            {
+                logFile.WriteLine($"GetPosition() called for {Name} with daysSinceStart = {daysSinceStart}");
+            }
+
             if (OrbitalPeriod <= 0)
+            {
+                using (StreamWriter logFile = new StreamWriter(logFilePath, true))
+                {
+                    logFile.WriteLine($"{Name} is stationary (OrbitalPeriod = {OrbitalPeriod})");
+                }
                 return (0, 0);
-            
+            }
+
             double angle = 2 * Math.PI * daysSinceStart / OrbitalPeriod;
             double x = Math.Cos(angle) * OrbitalRadius;
             double y = Math.Sin(angle) * OrbitalRadius;
+
+            using (StreamWriter logFile = new StreamWriter(logFilePath, true))
+            {
+                logFile.WriteLine($"{Name} position calculated: X = {x}, Y = {y}");
+            }
+
             return (x, y);
         }
     }
 
-    public class Star : SpaceObject
+        public class Star : SpaceObject
     {
         public Star(String name) : base(name) { }
-        public override void Draw() {
+        public override void Draw()
+        {
             Console.Write("Star : ");
             base.Draw();
         }
@@ -45,16 +66,41 @@ namespace SpaceSimulator
 
     public class Planet : SpaceObject
     {
-
         public List<Moon> Moons { get; set; } = new List<Moon>();
+
         public Planet(String name) : base(name) { }
-        public override void Draw() {
+
+        public override void Draw()
+        {
             Console.Write("Planet : ");
             base.Draw();
         }
+
+        // 🎯 Oppdater planetens posisjon basert på tid
+        public void UpdatePosition(double timeStep)
+        {
+            string logFilePath = "simulation_log.txt";
+            using (StreamWriter logFile = new StreamWriter(logFilePath, true))
+            {
+                logFile.WriteLine($"Updating {Name} position at timeStep {timeStep}...");
+            }
+
+            if (OrbitalPeriod > 0) // Sjekk at planeten faktisk beveger seg
+            {
+                double angle = 2 * Math.PI * (timeStep / OrbitalPeriod);
+                CurrentX = Math.Cos(angle) * OrbitalRadius;
+                CurrentY = Math.Sin(angle) * OrbitalRadius;
+
+                using (StreamWriter logFile = new StreamWriter(logFilePath, true))
+                {
+                    logFile.WriteLine($"{Name} updated position to ({CurrentX}, {CurrentY})");
+                }
+            }
+        }
     }
 
-    public class Moon : SpaceObject
+
+        public class Moon : SpaceObject
     {
         public Planet Orbits { get; set; }
 
@@ -80,7 +126,32 @@ namespace SpaceSimulator
 
             return (moonX, moonY);
         }
+
+        // 🎯 Oppdater månens posisjon basert på tid
+        public void UpdatePosition(double timeStep)
+        {
+            string logFilePath = "simulation_log.txt";
+            using (StreamWriter logFile = new StreamWriter(logFilePath, true))
+            {
+                logFile.WriteLine($"Updating {Name} position at timeStep {timeStep}...");
+            }
+
+            if (OrbitalPeriod > 0) // Sjekk at planeten faktisk beveger seg
+            {
+                double angle = 2 * Math.PI * (timeStep / OrbitalPeriod);
+                CurrentX = Math.Cos(angle) * OrbitalRadius;
+                CurrentY = Math.Sin(angle) * OrbitalRadius;
+
+                using (StreamWriter logFile = new StreamWriter(logFilePath, true))
+                {
+                    logFile.WriteLine($"{Name} updated position to ({CurrentX}, {CurrentY})");
+                }
+            }
+        }
+
+
     }
+
 
 
     public class Asteroid : SpaceObject
@@ -122,3 +193,4 @@ namespace SpaceSimulator
         }
     }
 }
+
