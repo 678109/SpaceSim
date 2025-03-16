@@ -670,7 +670,7 @@ namespace SpaceSimulator
             var triton = new Moon("Triton", neptune)
             {
                 OrbitalRadius = 355,
-                OrbitalPeriod = -5.88,  // Retrograd bane
+                OrbitalPeriod = -5.88,  
                 ObjectRadius = 1353.4,
                 RotationPeriod = -5.88,
                 Colour = "grey"

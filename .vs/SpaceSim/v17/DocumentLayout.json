@@ -7,20 +7,20 @@
       "RelativeMoniker": "D:0:0:{62B78EAC-7F91-435E-8BF6-9206C29EFA6B}|SpaceSimWPF\\SpaceSimWPF.csproj|solutionrelative:spacesimwpf\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{ED1164B4-8837-44F6-957F-F9D5CBB089E3}|SpaceSim\\SpaceSimulator.csproj|c:\\dat hvl\\dat154\\spacesim\\spacesim\\spaceobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ED1164B4-8837-44F6-957F-F9D5CBB089E3}|SpaceSim\\SpaceSimulator.csproj|solutionrelative:spacesim\\spaceobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{62B78EAC-7F91-435E-8BF6-9206C29EFA6B}|SpaceSimWPF\\SpaceSimWPF.csproj|c:\\dat hvl\\dat154\\spacesim\\spacesimwpf\\simulationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62B78EAC-7F91-435E-8BF6-9206C29EFA6B}|SpaceSimWPF\\SpaceSimWPF.csproj|solutionrelative:spacesimwpf\\simulationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{62B78EAC-7F91-435E-8BF6-9206C29EFA6B}|SpaceSimWPF\\SpaceSimWPF.csproj|c:\\dat hvl\\dat154\\spacesim\\spacesimwpf\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{62B78EAC-7F91-435E-8BF6-9206C29EFA6B}|SpaceSimWPF\\SpaceSimWPF.csproj|solutionrelative:spacesimwpf\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{62B78EAC-7F91-435E-8BF6-9206C29EFA6B}|SpaceSimWPF\\SpaceSimWPF.csproj|c:\\dat hvl\\dat154\\spacesim\\spacesimwpf\\simulationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{62B78EAC-7F91-435E-8BF6-9206C29EFA6B}|SpaceSimWPF\\SpaceSimWPF.csproj|solutionrelative:spacesimwpf\\simulationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{ED1164B4-8837-44F6-957F-F9D5CBB089E3}|SpaceSim\\SpaceSimulator.csproj|c:\\dat hvl\\dat154\\spacesim\\spacesim\\objectinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{ED1164B4-8837-44F6-957F-F9D5CBB089E3}|SpaceSim\\SpaceSimulator.csproj|solutionrelative:spacesim\\objectinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED1164B4-8837-44F6-957F-F9D5CBB089E3}|SpaceSim\\SpaceSimulator.csproj|c:\\dat hvl\\dat154\\spacesim\\spacesim\\spaceobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED1164B4-8837-44F6-957F-F9D5CBB089E3}|SpaceSim\\SpaceSimulator.csproj|solutionrelative:spacesim\\spaceobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4EC3FA82-84E2-4F94-8E02-BF53C31AEC5E}|SpaceSimConsole\\SpaceSimConsole.csproj|c:\\dat hvl\\dat154\\spacesim\\spacesimconsole\\astronomy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -38,15 +38,16 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "SimulationController.cs",
               "DocumentMoniker": "C:\\DAT HVL\\DAT154\\SpaceSim\\SpaceSimWPF\\SimulationController.cs",
               "RelativeDocumentMoniker": "SpaceSimWPF\\SimulationController.cs",
               "ToolTip": "C:\\DAT HVL\\DAT154\\SpaceSim\\SpaceSimWPF\\SimulationController.cs",
               "RelativeToolTip": "SpaceSimWPF\\SimulationController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAABUAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADAAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-16T12:52:47.955Z"
+              "WhenOpened": "2025-03-16T12:52:47.955Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -56,7 +57,7 @@
               "RelativeDocumentMoniker": "SpaceSimWPF\\MainWindow.xaml.cs",
               "ToolTip": "C:\\DAT HVL\\DAT154\\SpaceSim\\SpaceSimWPF\\MainWindow.xaml.cs",
               "RelativeToolTip": "SpaceSimWPF\\MainWindow.xaml.cs",
-              "ViewState": "AgIAAGQAAAAAAAAAAAAUwIYAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAALEBAAAAAAAAAAAowMABAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-10T15:12:48.607Z",
               "EditorCaption": ""
@@ -70,29 +71,31 @@
               "ToolTip": "C:\\DAT HVL\\DAT154\\SpaceSim\\SpaceSimWPF\\MainWindow.xaml",
               "RelativeToolTip": "SpaceSimWPF\\MainWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-03-14T19:28:20.621Z"
+              "WhenOpened": "2025-03-14T19:28:20.621Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 3,
               "Title": "ObjectInfo.cs",
               "DocumentMoniker": "C:\\DAT HVL\\DAT154\\SpaceSim\\SpaceSim\\ObjectInfo.cs",
               "RelativeDocumentMoniker": "SpaceSim\\ObjectInfo.cs",
               "ToolTip": "C:\\DAT HVL\\DAT154\\SpaceSim\\SpaceSim\\ObjectInfo.cs",
               "RelativeToolTip": "SpaceSim\\ObjectInfo.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAOsCAAA2AAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAKACAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-06T14:22:51.452Z"
+              "WhenOpened": "2025-03-06T14:22:51.452Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "SpaceObject.cs",
               "DocumentMoniker": "C:\\DAT HVL\\DAT154\\SpaceSim\\SpaceSim\\SpaceObject.cs",
               "RelativeDocumentMoniker": "SpaceSim\\SpaceObject.cs",
               "ToolTip": "C:\\DAT HVL\\DAT154\\SpaceSim\\SpaceSim\\SpaceObject.cs",
               "RelativeToolTip": "SpaceSim\\SpaceObject.cs",
-              "ViewState": "AgIAAHIAAAAAAAAAAAAlwI4AAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAK8AAAAAAAAAAAAqwMkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-03T15:25:32.159Z",
               "EditorCaption": ""
@@ -105,9 +108,10 @@
               "RelativeDocumentMoniker": "SpaceSimConsole\\Astronomy.cs",
               "ToolTip": "C:\\DAT HVL\\DAT154\\SpaceSim\\SpaceSimConsole\\Astronomy.cs",
               "RelativeToolTip": "SpaceSimConsole\\Astronomy.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAuAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAEsAAABIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-03T15:54:04.999Z"
+              "WhenOpened": "2025-03-03T15:54:04.999Z",
+              "EditorCaption": ""
             }
           ]
         }
